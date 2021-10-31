@@ -14,6 +14,20 @@ class AgendaApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Agenda de Contatos"),
         ),
+        body: Column(
+          children: <Widget>[
+            Image.asset("images/logo.png"),
+            Container(
+              color: Colors.blue,
+              child: Column(
+                children: const <Widget>[
+                  Icon(Icons.people_sharp),
+                  Text("Contatos"),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
