@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const AgendaApp());
-  save(Contato(id: 0, nome: "Junio", numero: "9090"));
+  save(Contato(id: 0, nome: "Junio", numero: "9999"));
+  save(Contato(id: 0, nome: "NovoContato", numero: "0000"));
+  save(Contato(id: 0, nome: "Maria", numero: "0001"));
+  save(Contato(id: 0, nome: "José", numero: "0002"));
   findAll().then((contatos) => debugPrint(contatos.toString()));
 }
 

@@ -1,34 +1,27 @@
+import 'package:agenda/models/contato.dart';
 import 'package:agenda/screens/formulario_contatos.dart';
 import 'package:flutter/material.dart';
 
 const _appBarTitulo = "Lista de Contatos";
-const _nomeContato = "Nome";
-const _numeroContato = "Número";
 
 class ListaContatos extends StatelessWidget {
-  const ListaContatos({Key? key}) : super(key: key);
+
+  final List<Contato> contatos = [];
 
   @override
   Widget build(BuildContext context) {
+    contatos.add(Contato(id: 0, nome: "Junio", numero: "0800"));
+    contatos.add(Contato(id: 0, nome: "Teste", numero: "0900"));
     return Scaffold(
       appBar: AppBar(
         title: const Text(_appBarTitulo),
       ),
-      body: ListView(
-        children: const <Widget>[
-          Card(
-            child: ListTile(
-              title: Text(
-                _nomeContato,
-                style: TextStyle(fontSize: 24.0),
-              ),
-              subtitle: Text(
-                _numeroContato,
-                style: TextStyle(fontSize: 16.0),
-              ),
-            ),
-          ),
-        ],
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          final Contato contato = contatos[index];
+          return _itemLista(contato);
+        },
+        itemCount: contatos.length,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -43,6 +36,32 @@ class ListaContatos extends StatelessWidget {
                   ));
         },
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class _itemLista extends StatelessWidget {
+  final Contato contato;
+
+  const _itemLista(this.contato);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(
+          contato.nome,
+          style: const TextStyle(
+            fontSize: 24.0,
+          ),
+        ),
+        subtitle: Text(
+          contato.numero,
+          style: const TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
       ),
     );
   }
