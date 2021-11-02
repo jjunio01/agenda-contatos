@@ -1,4 +1,4 @@
-import 'package:agenda/database/app_database.dart';
+import 'package:agenda/database/dao/contato_dao.dart';
 import 'package:agenda/models/contato.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +14,7 @@ class FormularioContatos extends StatefulWidget {
 class _FormularioContatosState extends State<FormularioContatos> {
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _numeroController = TextEditingController();
+  final ContatoDAO _dao = ContatoDAO();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,9 @@ class _FormularioContatosState extends State<FormularioContatos> {
                       nome: nomeContato,
                       numero: numeroContato,
                     );
-                    save(novoContato).then((id) => Navigator.pop(context));
+                    _dao
+                        .save(novoContato)
+                        .then((id) => Navigator.of(context).pop());
                   },
                   child: const Text("Adicionar"),
                   style: ElevatedButton.styleFrom(
