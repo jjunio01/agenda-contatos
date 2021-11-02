@@ -61,8 +61,8 @@ class _FormularioContatosState extends State<FormularioContatos> {
                     final String nomeContato = _nomeController.text;
                     final String numeroContato = _numeroController.text;
                     Contato novoContato = Contato(
-                      nomeContato,
-                      numeroContato,
+                      nome: nomeContato,
+                      numero: numeroContato,
                     );
                     Navigator.pop(
                       context,
