@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 
 const _appBarTitulo = "Lista de Contatos";
 
-class ListaContatos extends StatelessWidget {
+class ListaContatos extends StatefulWidget {
+  @override
+  State<ListaContatos> createState() => _ListaContatosState();
+}
+
+class _ListaContatosState extends State<ListaContatos> {
   final List<Contato> contatos = [];
 
   @override
@@ -56,7 +61,7 @@ class ListaContatos extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => const FormularioContatos(),
                 ),
-              );
+              ).then((value) => setState(() {}));
         },
         child: const Icon(Icons.add),
       ),
