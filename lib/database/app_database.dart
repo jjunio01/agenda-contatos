@@ -13,6 +13,7 @@ Future<Database> createDataBase() {
             "numero TEXT)");
       },
       version: 1,
+      onDowngrade: onDatabaseDowngradeDelete
     );
   });
 }

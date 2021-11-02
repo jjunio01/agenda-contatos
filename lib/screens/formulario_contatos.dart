@@ -66,9 +66,7 @@ class _FormularioContatosState extends State<FormularioContatos> {
                       nome: nomeContato,
                       numero: numeroContato,
                     );
-                    save(novoContato).then((id) => Navigator.pop(
-                          context,
-                        ));
+                    save(novoContato).then((id) => Navigator.pop(context));
                   },
                   child: const Text("Adicionar"),
                   style: ElevatedButton.styleFrom(
