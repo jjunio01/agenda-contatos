@@ -32,8 +32,15 @@ class ListaContatos extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const FormularioContatos()));
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => const FormularioContatos(),
+                ),
+              )
+              .then((novoContato) => debugPrint(
+                    novoContato.toString(),
+                  ));
         },
         child: const Icon(Icons.add),
       ),
