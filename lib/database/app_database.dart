@@ -17,12 +17,12 @@ Future<Database> createDataBase() {
   });
 }
 
-void save(Contato contato) {
-  createDataBase().then((db) {
+Future<int> save(Contato contato) {
+  return createDataBase().then((db) {
     final Map<String, dynamic> contatoMap = <String, dynamic>{};
     contatoMap['nome'] = contato.nome;
     contatoMap["numero"] = contato.numero;
-    db.insert("contatos", contatoMap);
+    return db.insert("contatos", contatoMap);
   });
 }
 
