@@ -46,6 +46,7 @@ class ListaContatos extends StatelessWidget {
                 itemCount: contatosDB.length,
               );
           }
+          return const Text("Erro inesperado");
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -55,10 +56,7 @@ class ListaContatos extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => const FormularioContatos(),
                 ),
-              )
-              .then((novoContato) => debugPrint(
-                    novoContato.toString(),
-                  ));
+              );
         },
         child: const Icon(Icons.add),
       ),

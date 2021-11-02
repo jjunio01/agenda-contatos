@@ -1,3 +1,4 @@
+import 'package:agenda/database/app_database.dart';
 import 'package:agenda/models/contato.dart';
 import 'package:flutter/material.dart';
 
@@ -61,14 +62,13 @@ class _FormularioContatosState extends State<FormularioContatos> {
                     final String nomeContato = _nomeController.text;
                     final String numeroContato = _numeroController.text;
                     Contato novoContato = Contato(
-                      id:0,
+                      id: 0,
                       nome: nomeContato,
                       numero: numeroContato,
                     );
-                    Navigator.pop(
-                      context,
-                      novoContato,
-                    );
+                    save(novoContato).then((id) => Navigator.pop(
+                          context,
+                        ));
                   },
                   child: const Text("Adicionar"),
                   style: ElevatedButton.styleFrom(
