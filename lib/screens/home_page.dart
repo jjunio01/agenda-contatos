@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ListaContatos(),
+                    builder: (context) => const ListaContatos(),
                   ));
                 },
                 child: Container(

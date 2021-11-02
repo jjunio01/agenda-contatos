@@ -1,4 +1,4 @@
-import 'package:agenda/database/app_database.dart';
+import 'package:agenda/database/dao/contato_dao.dart';
 import 'package:agenda/models/contato.dart';
 import 'package:agenda/screens/formulario_contatos.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +6,16 @@ import 'package:flutter/material.dart';
 const _appBarTitulo = "Lista de Contatos";
 
 class ListaContatos extends StatefulWidget {
+  const ListaContatos({Key? key}) : super(key: key);
+
   @override
   State<ListaContatos> createState() => _ListaContatosState();
 }
 
 class _ListaContatosState extends State<ListaContatos> {
   final List<Contato> contatos = [];
+
+  final ContatoDAO _dao = ContatoDAO();
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +24,11 @@ class _ListaContatosState extends State<ListaContatos> {
         title: const Text(_appBarTitulo),
       ),
       body: FutureBuilder<List<Contato>>(
-        initialData: [],
-        future: findAll(),
+        initialData: const [],
+        future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
-              // TODO: Handle this case.
               break;
             case ConnectionState.waiting:
               return Center(
@@ -39,14 +42,13 @@ class _ListaContatosState extends State<ListaContatos> {
                 ),
               );
             case ConnectionState.active:
-              // TODO: Handle this case.
               break;
             case ConnectionState.done:
               final List<Contato> contatosDB = snapshot.data as List<Contato>;
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final Contato contatoDB = contatosDB[index];
-                  return _itemLista(contatoDB);
+                  return _ItemLista(contatoDB);
                 },
                 itemCount: contatosDB.length,
               );
@@ -61,7 +63,8 @@ class _ListaContatosState extends State<ListaContatos> {
                 MaterialPageRoute(
                   builder: (context) => const FormularioContatos(),
                 ),
-              ).then((value) => setState(() {}));
+              )
+              .then((value) => setState(() {}));
         },
         child: const Icon(Icons.add),
       ),
@@ -69,10 +72,10 @@ class _ListaContatosState extends State<ListaContatos> {
   }
 }
 
-class _itemLista extends StatelessWidget {
+class _ItemLista extends StatelessWidget {
   final Contato contato;
 
-  const _itemLista(this.contato);
+  const _ItemLista(this.contato);
 
   @override
   Widget build(BuildContext context) {
