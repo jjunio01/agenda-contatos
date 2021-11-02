@@ -61,6 +61,7 @@ class _FormularioContatosState extends State<FormularioContatos> {
                     final String nomeContato = _nomeController.text;
                     final String numeroContato = _numeroController.text;
                     Contato novoContato = Contato(
+                      id:0,
                       nome: nomeContato,
                       numero: numeroContato,
                     );
