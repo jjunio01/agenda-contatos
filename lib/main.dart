@@ -1,6 +1,4 @@
-import 'package:agenda/screens/formulario_contatos.dart';
 import 'package:agenda/screens/home_page.dart';
-import 'package:agenda/screens/lista_contatos.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,4 +26,3 @@ class AgendaApp extends StatelessWidget {
     );
   }
 }
-
