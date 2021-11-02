@@ -2,7 +2,10 @@ class Contato {
   final String nome;
   final String numero;
 
-  Contato(this.nome, this.numero);
+  Contato({
+    required this.nome,
+    required this.numero,
+  });
 
   @override
   String toString() {
